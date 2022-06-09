@@ -17,6 +17,7 @@ public class Present extends AppCompatActivity {
     Button back, done;
     ImageView imageView;
     HelperSQL mast=new HelperSQL(this);
+    Person mine;
 
 
 //dddddddddd
@@ -38,6 +39,7 @@ public class Present extends AppCompatActivity {
             Person person=mast.getPersonById(num);
             mast.close();
             show(person) ;
+            mine =person;
         }
     }
 
@@ -63,6 +65,9 @@ public class Present extends AppCompatActivity {
 
     public void edit(View view)
     {
+        Intent intent =  new Intent(this,EditActivity.class);
+        intent.putExtra("person",mine.getId());
+        startActivity(intent);
 
     }
     public void back(View view)

@@ -1,5 +1,8 @@
 package com.example.emember_new;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -13,17 +16,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 
-public class Addmen extends AppCompatActivity {
-
+public class EditActivity extends AppCompatActivity {
 
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     Person demyGod;
@@ -37,6 +37,8 @@ public class Addmen extends AppCompatActivity {
     ImageView pik1;
     HelperSQL mast;
     ArrayList<Person> listOfPerson;
+    RadioGroup rg;
+    RadioButton radioButton_r,radioButton_fr,radioButton_j,radioButton_fa;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -45,6 +47,7 @@ public class Addmen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addmen);
+        Bundle bundle = getIntent().getExtras();
         editTextFN = findViewById(R.id.FName);
         editTextLN = findViewById(R.id.LName);
         editTextDes = findViewById(R.id.kn);
@@ -52,11 +55,18 @@ public class Addmen extends AppCompatActivity {
         done = findViewById(R.id.Done);
         pik1 = findViewById(R.id.pik);
         mast = new HelperSQL(this);
-        myConnection=Connection.RANDOM;
+        radioButton_r=findViewById(R.id.radioButton);
+        radioButton_fa=findViewById(R.id.radioButton2);
+        radioButton_fr=findViewById(R.id.radioButton3);
+        radioButton_j=findViewById(R.id.radioButton4);
+        radioButton_j.setChecked(true);
+
+
+
 
         listOfPerson = new ArrayList<Person>();
 
-        RadioGroup rg = (RadioGroup) findViewById(R.id.Radio);
+        rg = (RadioGroup) findViewById(R.id.Radio);
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -81,6 +91,44 @@ public class Addmen extends AppCompatActivity {
             }
 
         });
+        long num =bundle.getLong("persen");
+
+        if(num!= 0)
+        {
+            mast.open();
+            Person person=mast.getPersonById(num);
+            mast.close();
+            show(person) ;
+            demyGod=person;
+        }
+        show(demyGod);
+
+    }
+    //    editTextFN, editTextLN, editTextDes;
+    private void show(@NonNull Person person)
+    {
+        editTextFN.setText(person.getFname());
+        editTextLN.setText(person.getlName());
+        editTextDes.setText(person.getDescription());
+        pik1.setImageBitmap(person.getDPic());
+        Connection connection=person.getMyConnection();
+        switch (connection) {
+            case RANDOM :
+                radioButton_r.setChecked(true);
+                break;
+            case FAMELY:
+                radioButton_fa.setChecked(true);
+                break;
+            case FRIENDS:
+                radioButton_fr.setChecked(true);
+                break;
+            case JOB:
+                radioButton_j.setChecked(true);
+                break;
+
+        }
+
+
 
 
     }
@@ -120,12 +168,12 @@ public class Addmen extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE)
             if (resultCode == RESULT_OK) {
 
-              //  dPic= (Bitmap) data.getExtras().get("data");
-               Bitmap b = (Bitmap) data.getExtras().get("data");
+                //  dPic= (Bitmap) data.getExtras().get("data");
+                Bitmap b = (Bitmap) data.getExtras().get("data");
 //                Bitmap b =Bitmap.createBitmap(dPic);
 //                byte [] b = new byte()[];
                 pik1.setImageBitmap(b);
-               // pik1.setImageBitmap(getResizedBitmap(b, 640, 800));
+                // pik1.setImageBitmap(getResizedBitmap(b, 640, 800));
 
             }
     }
@@ -202,54 +250,5 @@ public class Addmen extends AppCompatActivity {
         intent.putExtra("persen", num);
         startActivity(intent);
     }
-
-
-
-    public Person getDemyGod() {
-        return demyGod;
-    }
-
-    public void setDemyGod(Person demyGod) {
-        this.demyGod = demyGod;
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getlName() {
-        return lName;
-    }
-
-    public void setlName(String lName) {
-        this.lName = lName;
-    }
-
-//    public Bitmap getdPic() {
-//        return dPic;
-//    }
-//
-//    public void setdPic(Bitmap dPic) {
-//        this.dPic = dPic;
-//    }
-
-    public Connection getMyConnection() {
-        return myConnection;
-    }
-
-    public void setMyConnection(Connection myConnection) {
-        this.myConnection = myConnection;
-    }
-
-
-    public void back(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
 
 }
