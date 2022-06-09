@@ -139,7 +139,7 @@ public class HelperSQL extends SQLiteOpenHelper {
                 byte[] dPic =cursor.getBlob(Integer.parseInt(HelperSQL.COLUMN_PIK));
                 Bitmap  bitmap = BitmapFactory.decodeByteArray(dPic, 0, dPic.length);
 
-                Person c = new Person( fname,  lname,  bitmap, myConnection ,  description);
+                Person c = new Person( fname,  lname,  bitmap, myConnection ,  description,id);
 
                 l.add(c);
             }
@@ -161,7 +161,7 @@ public class HelperSQL extends SQLiteOpenHelper {
             byte[] bytesImage = cursor.getBlob(cursor.getColumnIndexOrThrow(HelperSQL.COLUMN_PIK));
             Bitmap dPic = BitmapFactory.decodeByteArray(bytesImage,0,bytesImage.length);
             //Bitmap dPic = Bitmap. cursor.getBlob(cursor.getColumnIndexOrThrow(HelperSQL.COLUMN_PIK)));
-            Person person = new Person( fname,  lname,  dPic, myConnection ,  description);
+            Person person = new Person( fname,  lname,  dPic, myConnection ,  description,id);
             this.close();
             return person;
         }
@@ -181,20 +181,22 @@ public class HelperSQL extends SQLiteOpenHelper {
     }
 
 
-    public static long updateByRow(Person c)
+    public static long updateByRow(Person p)
     {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        c.getdPic().compress(Bitmap.CompressFormat.PNG,0,stream);
+        p.getdPic().compress(Bitmap.CompressFormat.PNG,0,stream);
 
         ContentValues values=new ContentValues();
-        values.put(HelperSQL.COLUMN_ID, c.getId());
-        values.put(HelperSQL.COLUMN_F_NAME, c.getFname());
-        values.put(HelperSQL.COLUMN_L_NAME, c.getlName());
-        values.put(HelperSQL.COLUMN_CONNECTION, String.valueOf(c.getMyConnection()));
-        values.put(HelperSQL.COLUMN_DESCRIPTION, c.getDescription());
+        //values.put(HelperSQL.COLUMN_ID, p.getId());
+        values.put(HelperSQL.COLUMN_F_NAME, p.getFname());
+        values.put(HelperSQL.COLUMN_L_NAME, p.getlName());
+        values.put(HelperSQL.COLUMN_CONNECTION, String.valueOf(p.getMyConnection()));
+        values.put(HelperSQL.COLUMN_DESCRIPTION, p.getDescription());
         values.put(HelperSQL.COLUMN_PIK, stream.toByteArray());
 
-        return database.update(HelperSQL.TABLE_PERSON, values, HelperSQL.COLUMN_ID + "=" + c.getId(), null);
+        long lastId = database.insert(HelperSQL.TABLE_PERSON, null, values);
+
+        return database.update(HelperSQL.TABLE_PERSON, values, HelperSQL.COLUMN_ID + "=" + p.getId(), null);
 
 
 
@@ -222,7 +224,7 @@ public class HelperSQL extends SQLiteOpenHelper {
                 Connection myConnection = Connection.valueOf(cursor.getString(Integer.parseInt(HelperSQL.COLUMN_CONNECTION)));
                 byte[] bytesImage = cursor.getBlob(Integer.parseInt(HelperSQL.COLUMN_PIK));
                 Bitmap dPic = BitmapFactory.decodeByteArray(bytesImage,0,bytesImage.length);
-                Person person = new Person( fname,  lname,  dPic, myConnection ,  description);
+                Person person = new Person( fname,  lname,  dPic, myConnection ,  description,id);
                 l.add(person);
 
             }

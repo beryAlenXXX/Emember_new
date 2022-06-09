@@ -18,6 +18,24 @@ public class Person {
     Connection myConnection;
     String description;
 
+    public Person(String fname, String lname, Bitmap bitmap, Connection myConnection, String description, long id)
+    {
+        this.id=id;
+        if (dPic!=null)
+            this.dPic = dPic;
+        if (fname!=null)
+            this.fname = fname;
+        if (lName!=null)
+            this.lName = lName;
+        if (myConnection!=null)
+            this.myConnection=myConnection;
+        if(description !=null)
+        {
+            this.description = description;
+        }
+
+    }
+
     public long getId() {
         return id;
     }
