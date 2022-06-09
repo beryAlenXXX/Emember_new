@@ -19,7 +19,7 @@ public class Present extends AppCompatActivity {
     HelperSQL mast=new HelperSQL(this);
 
 
-
+//dddddddddd
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
