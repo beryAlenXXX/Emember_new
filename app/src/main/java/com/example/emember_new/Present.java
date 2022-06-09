@@ -29,7 +29,7 @@ public class Present extends AppCompatActivity {
 
 
 
-        Intent intent =getIntent();
+
         Bundle bundle = getIntent().getExtras();
         long num =bundle.getLong("persen");
 

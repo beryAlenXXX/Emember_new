@@ -91,7 +91,7 @@ public class EditActivity extends AppCompatActivity {
             }
 
         });
-        long num =bundle.getLong("persen");
+        long num =(long) bundle.getLong("person");
 
         if(num!= 0)
         {
@@ -223,7 +223,7 @@ public class EditActivity extends AppCompatActivity {
 //        demyGod = new Person(fname, lName, dPic, myConnection, knowledge);
 //    }
 
-    public void addPerson(View view) {
+    public void CPerson(View view) {
         fname = editTextFN.getText().toString();
         lName = editTextLN.getText().toString();
         knowledge = editTextDes.getText().toString();
@@ -246,7 +246,7 @@ public class EditActivity extends AppCompatActivity {
         pik1.setDrawingCacheEnabled(true);
         Bitmap bitmap = pik1.getDrawingCache();
         Person c1 = new Person(fname, lName, bitmap, myConnection, knowledge);
-        num = mast.createPerson(c1);
+        num = mast.updateByRow(c1);
         /////Toast.makeText(this, (int) num, Toast.LENGTH_SHORT).show();
         listOfPerson.add(c1);
         mast.close();

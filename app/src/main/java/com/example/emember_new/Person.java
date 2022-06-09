@@ -21,12 +21,12 @@ public class Person {
     public Person(String fname, String lname, Bitmap bitmap, Connection myConnection, String description, long id)
     {
         this.id=id;
-        if (dPic!=null)
-            this.dPic = dPic;
+        if (bitmap!=null)
+            dPic = bitmap;
         if (fname!=null)
             this.fname = fname;
-        if (lName!=null)
-            this.lName = lName;
+        if (lname!=null)
+            lName = lname;
         if (myConnection!=null)
             this.myConnection=myConnection;
         if(description !=null)

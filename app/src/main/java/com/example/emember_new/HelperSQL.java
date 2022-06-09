@@ -195,8 +195,8 @@ public class HelperSQL extends SQLiteOpenHelper {
         values.put(HelperSQL.COLUMN_PIK, stream.toByteArray());
 
         long lastId = database.insert(HelperSQL.TABLE_PERSON, null, values);
-
-        return database.update(HelperSQL.TABLE_PERSON, values, HelperSQL.COLUMN_ID + "=" + p.getId(), null);
+        database.update(HelperSQL.TABLE_PERSON, values, HelperSQL.COLUMN_ID + "=" + p.getId(), null);
+        return lastId;
 
 
 
