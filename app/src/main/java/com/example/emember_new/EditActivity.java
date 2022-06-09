@@ -115,15 +115,19 @@ public class EditActivity extends AppCompatActivity {
         switch (connection) {
             case RANDOM :
                 radioButton_r.setChecked(true);
+                myConnection=Connection.RANDOM;
                 break;
             case FAMELY:
                 radioButton_fa.setChecked(true);
+                myConnection=Connection.FAMELY;
                 break;
             case FRIENDS:
                 radioButton_fr.setChecked(true);
+                myConnection =Connection.FRIENDS;
                 break;
             case JOB:
                 radioButton_j.setChecked(true);
+                myConnection=Connection.JOB;
                 break;
 
         }
