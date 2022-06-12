@@ -201,30 +201,34 @@ public class HelperSQL extends SQLiteOpenHelper {
 
 
     }
-
+//"SELECT * FROM
     public ArrayList<Person>getAllCustomersByFIlter(String selection,String OrderBy)
     {
         Cursor cursor=database.query(HelperSQL.TABLE_PERSON, allColumns, selection, null, null, null, OrderBy);
         ArrayList<Person>l=convertCurserToList(cursor);
         return  l;
     }
+    public ArrayList<Person>getAllCustomersByFIlter(String selection)
+    {
+        Cursor cursor=database.query(HelperSQL.TABLE_PERSON, allColumns, "SELECT * FROM TABLE_PERSON COLUMN_CONNECTION = '\"+String.valueOf(Connection.RANDOM)+\"'\" , null, null, null, OrderBy);
+        ArrayList<Person>l=convertCurserToList(cursor);
+        return  l;
+    }
 
 
     private ArrayList<Person> convertCurserToList(Cursor cursor) {
-        ArrayList<Person> l=new ArrayList<>();
+        ArrayList<Person> l = new ArrayList<>();
 
-        if(cursor.getCount()>0)
-        {
-            while(cursor.moveToNext())
-            {
-                long id=cursor.getLong(Integer.parseInt(HelperSQL.COLUMN_ID));
-                String fname=cursor.getString(Integer.parseInt(HelperSQL.COLUMN_F_NAME));
-                String lname=cursor.getString(Integer.parseInt(HelperSQL.COLUMN_L_NAME));
-                String description=cursor.getString(Integer.parseInt(HelperSQL.COLUMN_DESCRIPTION));
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                long id = cursor.getLong(Integer.parseInt(HelperSQL.COLUMN_ID));
+                String fname = cursor.getString(Integer.parseInt(HelperSQL.COLUMN_F_NAME));
+                String lname = cursor.getString(Integer.parseInt(HelperSQL.COLUMN_L_NAME));
+                String description = cursor.getString(Integer.parseInt(HelperSQL.COLUMN_DESCRIPTION));
                 Connection myConnection = Connection.valueOf(cursor.getString(Integer.parseInt(HelperSQL.COLUMN_CONNECTION)));
                 byte[] bytesImage = cursor.getBlob(Integer.parseInt(HelperSQL.COLUMN_PIK));
-                Bitmap dPic = BitmapFactory.decodeByteArray(bytesImage,0,bytesImage.length);
-                Person person = new Person( fname,  lname,  dPic, myConnection ,  description,id);
+                Bitmap dPic = BitmapFactory.decodeByteArray(bytesImage, 0, bytesImage.length);
+                Person person = new Person(fname, lname, dPic, myConnection, description, id);
                 l.add(person);
 
             }

@@ -13,22 +13,30 @@
         android:onClick="back"
         android:text="back"
         android:textSize="20dp" />
+    <ListView
+        android:id="@+id/SHOW_ALL"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="#0000CC"
+        android:dividerHeight="0.1dp">
 
-    <HorizontalScrollView
-        android:layout_width="409dp"
-        android:layout_height="681dp"
-        android:layout_alignParentTop="true"
-        android:fillViewport="true"
-        android:measureAllChildren="false"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="49dp">
+    </ListView>
 
-        <LinearLayout
-            android:id="@+id/SHOW_ALL"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-    </HorizontalScrollView>
+<!--    <HorizontalScrollView-->
+<!--        android:layout_width="409dp"-->
+<!--        android:layout_height="681dp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:fillViewport="true"-->
+<!--        android:measureAllChildren="false"-->
+<!--        tools:layout_editor_absoluteX="1dp"-->
+<!--        tools:layout_editor_absoluteY="49dp">-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/SHOW_ALL"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical" />-->
+<!--    </HorizontalScrollView>-->
 
 
 </LinearLayout>
