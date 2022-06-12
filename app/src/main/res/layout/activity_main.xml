@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <Button
         android:id="@+id/button"
         android:layout_width="409dp"
@@ -20,7 +21,7 @@
         tools:layout_editor_absoluteY="3dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/All"
         android:layout_width="352dp"
         android:layout_height="80dp"
         android:gravity="center_vertical"
@@ -29,9 +30,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="112dp" />
+    <Button
+        android:id="@+id/RANDOM"
+        android:layout_width="352dp"
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:text="RANDOM"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="112dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/famliy"
         android:layout_width="352dp"
         android:layout_height="80dp"
         android:gravity="center_vertical"
@@ -41,7 +52,7 @@
         tools:layout_editor_absoluteY="184dp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/friends"
         android:layout_width="352dp"
         android:layout_height="80dp"
         android:gravity="center_vertical"
@@ -50,13 +61,13 @@
         />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/job"
         android:layout_width="352dp"
         android:layout_height="80dp"
         android:gravity="center_vertical"
         android:text="job"
-        android:textSize="24sp"
-        />
+        android:textSize="24sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
