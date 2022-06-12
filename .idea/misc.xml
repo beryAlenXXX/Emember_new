@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/neria/StudioProjects/Emember_new/app/src/main/res/layout/activity_addmen.xml" value="0.1" />
+        <entry key="..\:/Users/neria/StudioProjects/Emember_new/app/src/main/res/layout/activity_edit.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/student/Emember_new/app/src/main/res/layout/activity_addmen.xml" value="0.33287671232876714" />
         <entry key="..\:/Users/student/Emember_new/app/src/main/res/layout/activity_edit.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/student/Emember_new/app/src/main/res/layout/activity_main.xml" value="0.11594202898550725" />
@@ -19,7 +21,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

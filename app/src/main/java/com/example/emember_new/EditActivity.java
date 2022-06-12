@@ -29,7 +29,7 @@ public class EditActivity extends AppCompatActivity {
     Person demyGod;
     String fname;
     String lName;
-    //Bitmap dPic;
+    Bitmap dPic;
     Connection myConnection;
     String knowledge;
     EditText editTextFN, editTextLN, editTextDes;
@@ -38,7 +38,7 @@ public class EditActivity extends AppCompatActivity {
     HelperSQL mast;
     ArrayList<Person> listOfPerson;
     RadioGroup rg;
-    RadioButton radioButton_r,radioButton_fr,radioButton_j,radioButton_fa;
+    RadioButton radioButton_r, radioButton_fr, radioButton_j, radioButton_fa;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -47,21 +47,21 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addmen);
+
         Bundle bundle = getIntent().getExtras();
         editTextFN = findViewById(R.id.FName);
         editTextLN = findViewById(R.id.LName);
         editTextDes = findViewById(R.id.kn);
         back = findViewById(R.id.back);
         done = findViewById(R.id.Done);
+
         pik1 = findViewById(R.id.pik);
         mast = new HelperSQL(this);
-        radioButton_r=findViewById(R.id.radioButton);
-        radioButton_fa=findViewById(R.id.radioButton2);
-        radioButton_fr=findViewById(R.id.radioButton3);
-        radioButton_j=findViewById(R.id.radioButton4);
+        radioButton_r = findViewById(R.id.radioButton);
+        radioButton_fa = findViewById(R.id.radioButton2);
+        radioButton_fr = findViewById(R.id.radioButton3);
+        radioButton_j = findViewById(R.id.radioButton4);
         radioButton_j.setChecked(true);
-
-
 
 
         listOfPerson = new ArrayList<Person>();
@@ -91,48 +91,63 @@ public class EditActivity extends AppCompatActivity {
             }
 
         });
-        long num =(long) bundle.getLong("person");
+        long num = (long) bundle.getLong("persen");
 
-        if(num!= 0)
-        {
+        if (num != 0) {
             mast.open();
-            Person person=mast.getPersonById(num);
+            Person person = mast.getPersonById(num);
             mast.close();
-            show(person) ;
-            demyGod=person;
+            show(person);
+            demyGod = person;
         }
-        show(demyGod);
+
 
     }
-    //    editTextFN, editTextLN, editTextDes;
-    private void show(@NonNull Person person)
+
+    private void UpPerson()
     {
+        fname = editTextFN.getText().toString();
+        lName = editTextLN.getText().toString();
+        knowledge = editTextDes.getText().toString();
+
+
+        //Person person = new Person(fname, lName, dPic, myConnection, knowledge);
+
+
+        Log.i("data", "list size is " + listOfPerson.size());
+        createPerson();
+        ///Person person1 =mast.createPerson(person);
+        //Intent intent = new Intent(this, Present.class);
+        //intent.putExtra("persen", (Parcelable) person1);
+        //startActivity(intent);
+    }
+
+    //    editTextFN, editTextLN, editTextDes;
+    private void show(@NonNull Person person) {
         editTextFN.setText(person.getFname());
         editTextLN.setText(person.getlName());
         editTextDes.setText(person.getDescription());
         pik1.setImageBitmap(person.getDPic());
-        Connection connection=person.getMyConnection();
+        Connection connection = person.getMyConnection();
         switch (connection) {
-            case RANDOM :
+            case RANDOM:
                 radioButton_r.setChecked(true);
-                myConnection=Connection.RANDOM;
+                myConnection = Connection.RANDOM;
                 break;
             case FAMELY:
                 radioButton_fa.setChecked(true);
-                myConnection=Connection.FAMELY;
+                myConnection = Connection.FAMELY;
                 break;
             case FRIENDS:
                 radioButton_fr.setChecked(true);
-                myConnection =Connection.FRIENDS;
+                myConnection = Connection.FRIENDS;
                 break;
             case JOB:
                 radioButton_j.setChecked(true);
-                myConnection=Connection.JOB;
+                myConnection = Connection.JOB;
                 break;
 
         }
-
-
 
 
     }
@@ -149,13 +164,11 @@ public class EditActivity extends AppCompatActivity {
 
             if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
-            }
-            else {
+            } else {
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 try {
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                }
-                catch (ActivityNotFoundException e) {
+                } catch (ActivityNotFoundException e) {
                     // display error state to the user
                 }
             }
@@ -172,7 +185,7 @@ public class EditActivity extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE)
             if (resultCode == RESULT_OK) {
 
-                //  dPic= (Bitmap) data.getExtras().get("data");
+                // dPic= (Bitmap) data.getExtras().get("data");
                 Bitmap b = (Bitmap) data.getExtras().get("data");
 //                Bitmap b =Bitmap.createBitmap(dPic);
 //                byte [] b = new byte()[];
@@ -200,7 +213,7 @@ public class EditActivity extends AppCompatActivity {
     }
 
 
-//    public void download(String fname, String lName, Bitmap dPic, Connection
+    //    public void download(String fname, String lName, Bitmap dPic, Connection
 //            myConnection, String knowledge) {
 //        if (fname != null) {
 //            this.fname = fname;
@@ -219,11 +232,11 @@ public class EditActivity extends AppCompatActivity {
 //        }
 //    }
 //
-//    public void done() {
-//        demyGod = new Person(fname, lName, dPic, myConnection, knowledge);
-//    }
-
-    public void CPerson(View view) {
+    public void done()
+    {
+        demyGod = new Person(fname, lName, dPic, myConnection, knowledge);
+    }
+    public void addPerson(View view) {
         fname = editTextFN.getText().toString();
         lName = editTextLN.getText().toString();
         knowledge = editTextDes.getText().toString();
@@ -240,19 +253,39 @@ public class EditActivity extends AppCompatActivity {
         //startActivity(intent);
     }
 
-    public void createPerson() {
-        mast.open();
-        long num = 0;
-        pik1.setDrawingCacheEnabled(true);
-        Bitmap bitmap = pik1.getDrawingCache();
-        Person c1 = new Person(fname, lName, bitmap, myConnection, knowledge);
-        num = mast.updateByRow(c1);
-        /////Toast.makeText(this, (int) num, Toast.LENGTH_SHORT).show();
-        listOfPerson.add(c1);
-        mast.close();
-        Intent intent = new Intent(this, Present.class);
-        intent.putExtra("persen", num);
-        startActivity(intent);
-    }
 
+    public void createPerson () {
+            mast.open();
+            long num = 0;
+            pik1.setDrawingCacheEnabled(true);
+            Bitmap bitmap = pik1.getDrawingCache();
+            Person c1 = new Person(fname, lName, bitmap, myConnection, knowledge);
+            num = mast.updateByRow(c1);
+            /////Toast.makeText(this, (int) num, Toast.LENGTH_SHORT).show();
+            listOfPerson.add(c1);
+            mast.close();
+            Intent intent = new Intent(this, Present.class);
+            intent.putExtra("persen", num);
+            startActivity(intent);
+        }
+
+    public void UpPerson_w(View view)
+    {
+        fname = editTextFN.getText().toString();
+        lName = editTextLN.getText().toString();
+        knowledge = editTextDes.getText().toString();
+
+
+        //Person person = new Person(fname, lName, dPic, myConnection, knowledge);
+
+
+        Log.i("data", "list size is " + listOfPerson.size());
+        createPerson();
+        ///Person person1 =mast.createPerson(person);
+        //Intent intent = new Intent(this, Present.class);
+        //intent.putExtra("persen", (Parcelable) person1);
+        //startActivity(intent);
+
+    }
 }
+

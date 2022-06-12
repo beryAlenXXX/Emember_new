@@ -66,7 +66,7 @@ public class Present extends AppCompatActivity {
     public void edit(View view)
     {
         Intent intent =  new Intent(this,EditActivity.class);
-        intent.putExtra("person",mine.getId());
+        intent.putExtra("persen",mine.getId());
         startActivity(intent);
 
     }
