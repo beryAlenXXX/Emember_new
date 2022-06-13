@@ -1,8 +1,12 @@
 package com.example.emember_new;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,9 +45,12 @@ public class StudentGradeAdapter extends ArrayAdapter< Person>
             @Override
             public void onClick(View v)
             {
-                long num=temp.getId();
-                ListActivity listActivity =new ListActivity();
-                listActivity.viewOw(num);
+                long sort =temp.getId();
+                Bundle bundle =new Bundle()  ;
+                Intent intent =new Intent(context,Present.class );
+                intent.putExtra("persen", sort);
+//                    startActivity(intent);
+                startActivity(context, intent,bundle);
             }});
 //        if(temp.getGrade()>=56)
 //            iv.setImageResource(R.drawable.green_v);
