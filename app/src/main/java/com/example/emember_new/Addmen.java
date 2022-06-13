@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -51,7 +52,12 @@ public class Addmen extends AppCompatActivity {
         back = findViewById(R.id.back);
         done = findViewById(R.id.Done);
         pik1 = findViewById(R.id.pik);
-        mast = new HelperSQL(this);
+        mast = new HelperSQL(this) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                return null;
+            }
+        };
         myConnection=Connection.RANDOM;
 
         listOfPerson = new ArrayList<Person>();

@@ -23,6 +23,7 @@ public class ListActivity extends AppCompatActivity {
     private ListView showAll;
     private ArrayList<Person> mArrData;
     HelperSQL most;
+    StudentGradeAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +38,14 @@ public class ListActivity extends AppCompatActivity {
             }
         };
         most.open();
-        mArrData= most.getAllCustomersByFIlter_RANDOM();
+//        mArrData= most.getAllCustomersByFIlter_RANDOM();
+        //לאוסיף כבלה של ליסט
+        mArrData =most.getAllPerson();
         most.close();
 
 
-        showAll.setAdapter(new MyListAdaper(this, R.layout.list_per, mArrData));
+        adapter =new StudentGradeAdapter(this, R.layout.list_per, mArrData);
+        showAll.setAdapter(adapter);
         showAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

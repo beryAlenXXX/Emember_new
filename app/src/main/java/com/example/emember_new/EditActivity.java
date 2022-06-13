@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -56,7 +57,12 @@ public class EditActivity extends AppCompatActivity {
         done = findViewById(R.id.Done);
 
         pik1 = findViewById(R.id.pik);
-        mast = new HelperSQL(this);
+        mast = new HelperSQL(this) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                return null;
+            }
+        };
         radioButton_r = findViewById(R.id.radioButton);
         radioButton_fa = findViewById(R.id.radioButton2);
         radioButton_fr = findViewById(R.id.radioButton3);

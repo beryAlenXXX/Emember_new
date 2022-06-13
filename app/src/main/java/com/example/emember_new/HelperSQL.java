@@ -124,7 +124,7 @@ public abstract class HelperSQL extends SQLiteOpenHelper {
         p.setId(lastId);
 
     }
-    public ArrayList<Person> getAllCustomers() {
+    public ArrayList<Person> getAllPerson() {
 
         ArrayList<Person> l = new ArrayList<>();
         Cursor cursor=database.query(HelperSQL.TABLE_PERSON, allColumns, null, null, null, null, null);
@@ -133,15 +133,17 @@ public abstract class HelperSQL extends SQLiteOpenHelper {
         {
             while(cursor.moveToNext())
             {
-                long id=cursor.getLong(Integer.parseInt(HelperSQL.COLUMN_ID));
-                String fname=cursor.getString(Integer.parseInt(HelperSQL.COLUMN_F_NAME));
-                String lname=cursor.getString(Integer.parseInt(HelperSQL.COLUMN_L_NAME));
-                String description=cursor.getString(Integer.parseInt(HelperSQL.COLUMN_DESCRIPTION));
-                Connection myConnection = Connection.valueOf(cursor.getString(Integer.parseInt(HelperSQL.COLUMN_CONNECTION)));
-                byte[] dPic =cursor.getBlob(Integer.parseInt(HelperSQL.COLUMN_PIK));
-                Bitmap  bitmap = BitmapFactory.decodeByteArray(dPic, 0, dPic.length);
+                long id = cursor.getLong(cursor.getColumnIndexOrThrow(HelperSQL.COLUMN_ID));
+                String fname=cursor.getString(cursor.getColumnIndexOrThrow(HelperSQL.COLUMN_F_NAME));
+                String lname=cursor.getString(cursor.getColumnIndexOrThrow(HelperSQL.COLUMN_L_NAME));
+                //Toast.makeText(this,cursor.getString(cursor.getColumnIndexOrThrow(HelperSQL.COLUMN_CONNECTION)), Toast.LENGTH_SHORT).show();
+                String description=cursor.getString(cursor.getColumnIndexOrThrow(HelperSQL.COLUMN_DESCRIPTION));
+                Connection myConnection = Connection.valueOf(cursor.getString(cursor.getColumnIndexOrThrow(HelperSQL.COLUMN_CONNECTION)));
+                byte[] bytesImage = cursor.getBlob(cursor.getColumnIndexOrThrow(HelperSQL.COLUMN_PIK));
+                Bitmap dPic = BitmapFactory.decodeByteArray(bytesImage,0,bytesImage.length);
+                //Bitmap dPic = Bitmap. cursor.getBlob(cursor.getColumnIndexOrThrow(HelperSQL.COLUMN_PIK)));
 
-                Person c = new Person( fname,  lname,  bitmap, myConnection ,  description,id);
+                Person c = new Person( fname,  lname,  dPic, myConnection ,  description,id);
 
                 l.add(c);
             }
@@ -210,12 +212,12 @@ public abstract class HelperSQL extends SQLiteOpenHelper {
         ArrayList<Person>l=convertCurserToList(cursor);
         return  l;
     }
-    public ArrayList<Person>getAllCustomersByFIlter_RANDOM()
-    {
-        Cursor cursor=database.query(HelperSQL.TABLE_PERSON, allColumns, "SELECT * FROM TABLE_PERSON COLUMN_CONNECTION = '"+String.valueOf(Connection.RANDOM)+"'" , null, null, null, null);
-        ArrayList<Person>l=convertCurserToList(cursor);
-        return  l;
-    }
+//    public ArrayList<Person>getAllCustomersByFIlter_RANDOM()
+//    {
+//        Cursor cursor=database.query(HelperSQL.TABLE_PERSON, allColumns, "SELECT * FROM TABLE_PERSON COLUMN_CONNECTION = '"+String.valueOf(Connection.RANDOM)+"'" , null, null, null, null);
+//        ArrayList<Person>l=convertCurserToList(cursor);
+//        return  l;
+//    }
 
 
     private ArrayList<Person> convertCurserToList(Cursor cursor) {
