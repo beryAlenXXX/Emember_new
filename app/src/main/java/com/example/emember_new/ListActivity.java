@@ -25,6 +25,13 @@ public class ListActivity extends AppCompatActivity {
     HelperSQL most;
     StudentGradeAdapter adapter;
 
+    public void viewOw(long num)
+    {
+        Intent intent=new Intent(this,Present.class);
+        intent.putExtra("persen",num);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +63,6 @@ public class ListActivity extends AppCompatActivity {
 
 
     }
-
 
 
     public void back(View view) {

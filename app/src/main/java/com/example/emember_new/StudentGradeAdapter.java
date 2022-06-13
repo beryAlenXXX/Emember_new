@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,10 +33,18 @@ public class StudentGradeAdapter extends ArrayAdapter< Person>
         LayoutInflater layoutInflater = ((Activity)context).getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.list_per, parent, false);
 
-        TextView tvId =(TextView) view.findViewById(R.id.list_item_text);
+        Button button =(Button) view.findViewById(R.id.list_item_text);
         ImageView iv = (ImageView)view.findViewById(R.id.imageView);
         Person temp = objects.get(position);
-        tvId.setText("id: " + temp.getId()+" name"+temp.getFname()+" "+temp.getlName() );
+        button.setText("id: " + temp.getId()+" name"+temp.getFname()+" "+temp.getlName() );
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                long num=temp.getId();
+                ListActivity listActivity =new ListActivity();
+                listActivity.viewOw(num);
+            }});
 //        if(temp.getGrade()>=56)
 //            iv.setImageResource(R.drawable.green_v);
 //        else if(temp.getGrade()<56)
