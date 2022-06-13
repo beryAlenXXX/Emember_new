@@ -7,19 +7,21 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="112dp"
-        android:layout_height="121dp"
+        android:layout_width="109dp"
+        android:layout_height="151dp"
         android:clickable="true"
         app:srcCompat="@drawable/ic_baseline_account_box_24"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="3dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="298dp"
-        android:layout_height="117dp"
+        android:id="@+id/list_item_text"
+        android:layout_width="305dp"
+        android:layout_height="152dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="114dp" />
+        tools:layout_editor_absoluteX="107dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

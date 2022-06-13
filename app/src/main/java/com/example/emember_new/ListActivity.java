@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
     private ListView showAll;
-    private ArrayList<String> mArrData;
+    private ArrayList<Person> mArrData;
     HelperSQL most;
 
     @Override
@@ -30,10 +30,17 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
         Bundle bundle = getIntent().getExtras();
         showAll = findViewById(R.id.SHOW_ALL);
-        most = new HelperSQL(this);
+        most = new HelperSQL(this) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                return null;
+            }
+        };
         most.open();
+        mArrData= most.getAllCustomersByFIlter_RANDOM();
+        most.close();
 
-        generateListContent();
+
         showAll.setAdapter(new MyListAdaper(this, R.layout.list_per, mArrData));
         showAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -46,11 +53,7 @@ public class ListActivity extends AppCompatActivity {
 
     }
 
-    private void generateListContent() {
-        for (int i = 0; i < 55; i++) {
-            mArrData.add("This is row number " + i);
-        }
-    }
+
 
     public void back(View view) {
         Intent intent = new Intent(this, MainActivity.class);
@@ -59,9 +62,9 @@ public class ListActivity extends AppCompatActivity {
     }
     private class MyListAdaper extends ArrayAdapter<String> {
         private int layout;
-        private List<String> mObjects;
-        private MyListAdaper(Context context, int resource, List<String> objects) {
-            super(context, resource, objects);
+        private List<Person> mObjects;
+        private MyListAdaper(Context context, int resource, List<Person> objects) {
+            super(context, resource);
             mObjects = objects;
             layout = resource;
         }

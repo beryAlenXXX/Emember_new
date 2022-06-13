@@ -11,6 +11,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
@@ -18,7 +20,7 @@ import androidx.annotation.Nullable;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-public class HelperSQL extends SQLiteOpenHelper {
+public abstract class HelperSQL extends SQLiteOpenHelper {
     public static final String DATABASENAME = "person_db";
     public static final String TABLE_PERSON = "tblperson";
 
@@ -208,9 +210,9 @@ public class HelperSQL extends SQLiteOpenHelper {
         ArrayList<Person>l=convertCurserToList(cursor);
         return  l;
     }
-    public ArrayList<Person>getAllCustomersByFIlter(String selection)
+    public ArrayList<Person>getAllCustomersByFIlter_RANDOM()
     {
-        Cursor cursor=database.query(HelperSQL.TABLE_PERSON, allColumns, "SELECT * FROM TABLE_PERSON COLUMN_CONNECTION = '\"+String.valueOf(Connection.RANDOM)+\"'\" , null, null, null, OrderBy);
+        Cursor cursor=database.query(HelperSQL.TABLE_PERSON, allColumns, "SELECT * FROM TABLE_PERSON COLUMN_CONNECTION = '"+String.valueOf(Connection.RANDOM)+"'" , null, null, null, null);
         ArrayList<Person>l=convertCurserToList(cursor);
         return  l;
     }
@@ -238,6 +240,5 @@ public class HelperSQL extends SQLiteOpenHelper {
     }
 
 
-
-
+    public abstract View getView(int position, View convertView, ViewGroup parent);
 }
