@@ -23,6 +23,7 @@ public class delete extends AppCompatActivity {
         mast.open();
         Person person=mast.getPersonById(num);
         mast.close();
+        //;;;;;;;;;
         Intent intent =new Intent(this,MainActivity.class);
         intent.putExtra("from",4 );
         startActivity(intent);
