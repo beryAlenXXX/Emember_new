@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +15,7 @@ public class Present extends AppCompatActivity {
     TextView textFN, textLN, textKn;
     Button back, done;
     ImageView imageView;
+    long num;
     HelperSQL mast= new HelperSQL(this) {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -37,7 +36,7 @@ public class Present extends AppCompatActivity {
 
 
         Bundle bundle = getIntent().getExtras();
-        long num =bundle.getLong("persen");
+         num =bundle.getLong("persen");
 
         if(num!= 0)
         {
@@ -81,5 +80,10 @@ public class Present extends AppCompatActivity {
         Intent intent =new Intent(this,MainActivity.class);
         intent.putExtra("from", 3);
         startActivity(intent);
+    }
+
+    public void delete(View view)
+    {
+        mast.deleteByRow(num);
     }
 }

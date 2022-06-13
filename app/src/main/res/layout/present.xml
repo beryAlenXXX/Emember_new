@@ -51,12 +51,16 @@
         android:background="@drawable/ic_baseline_account_box_24" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/knowledge"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="delete"
+        android:onClick="delete"/>
 
 
 </LinearLayout>
