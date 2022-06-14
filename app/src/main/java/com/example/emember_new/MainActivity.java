@@ -115,4 +115,10 @@ public class MainActivity extends AppCompatActivity {
            startActivity(intent);
 
     }
+
+    public void kill_me(View view)
+    {
+        Intent intent =new Intent(this,I_hate_my_life.class);
+        startActivity(intent);
+    }
 }

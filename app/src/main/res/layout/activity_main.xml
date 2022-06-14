@@ -82,6 +82,14 @@
             android:onClick="addPerson"
 
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="kill_me"
+            android:text="דבר עם היצר" />
     </LinearLayout>
 
 
