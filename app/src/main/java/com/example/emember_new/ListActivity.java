@@ -48,6 +48,8 @@ public class ListActivity extends AppCompatActivity {
 //        mArrData= most.getAllCustomersByFIlter_RANDOM();
         //לאוסיף כבלה של ליסט
         mArrData =most.getAllPerson();
+        Connection connection= (Connection) bundle.get("comme");
+//        mArrData=most.getAllCustomersByFIlter(null,null,connection);
         most.close();
 
 

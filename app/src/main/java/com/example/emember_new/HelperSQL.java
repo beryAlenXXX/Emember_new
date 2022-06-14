@@ -205,13 +205,22 @@ public abstract class HelperSQL extends SQLiteOpenHelper {
 
 
     }
-//"SELECT * FROM
-    public ArrayList<Person>getAllCustomersByFIlter(String selection,String OrderBy)
+    public ArrayList<Person>getAllCustomersByFIlter(String selection,String OrderBy,Connection connection)
     {
-        Cursor cursor=database.query(HelperSQL.TABLE_PERSON, allColumns, selection, null, null, null, OrderBy);
+        String[] selectionArgs = new String[1];
+        String selectionA=new String(String.valueOf(connection));
+        selectionArgs[0]=selectionA;
+        Cursor cursor=database.query(HelperSQL.TABLE_PERSON, allColumns, COLUMN_CONNECTION+ "=?", selectionArgs , null, null, OrderBy);
         ArrayList<Person>l=convertCurserToList(cursor);
         return  l;
     }
+////"SELECT * FROM
+//    public ArrayList<Person>getAllCustomersByFIlter(String selection,String OrderBy)
+//    {
+//        Cursor cursor=database.query(HelperSQL.TABLE_PERSON, allColumns, selection, null, null, null, OrderBy);
+//        ArrayList<Person>l=convertCurserToList(cursor);
+//        return  l;
+//    }
 //    public ArrayList<Person>getAllCustomersByFIlter_RANDOM()
 //    {
 //        Cursor cursor=database.query(HelperSQL.TABLE_PERSON, allColumns, "SELECT * FROM TABLE_PERSON COLUMN_CONNECTION = '"+String.valueOf(Connection.RANDOM)+"'" , null, null, null, null);
