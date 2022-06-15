@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends OptionsMenuActivity {
     //Button add,RANDOM, FAMLIY,FRIENDS, JOB, YOU;
     Button add,all,random,family,frinds,job,you;
     public static final String CHANNEL_ID = "com.emember.CHANNEL_IDN";

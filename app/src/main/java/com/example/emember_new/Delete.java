@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Delete extends AppCompatActivity {
+public class Delete extends OptionsMenuActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

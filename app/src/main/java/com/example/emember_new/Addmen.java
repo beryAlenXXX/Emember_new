@@ -23,7 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class Addmen extends AppCompatActivity {
+public class Addmen extends OptionsMenuActivity {
 
 
     private static final int MY_CAMERA_REQUEST_CODE = 100;

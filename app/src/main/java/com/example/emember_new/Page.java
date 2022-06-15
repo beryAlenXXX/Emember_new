@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Page extends AppCompatActivity {
+public class Page extends OptionsMenuActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

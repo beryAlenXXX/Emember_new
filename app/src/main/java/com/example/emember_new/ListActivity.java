@@ -19,7 +19,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListActivity extends AppCompatActivity {
+public class ListActivity extends OptionsMenuActivity {
     private ListView showAll;
     private ArrayList<Person> mArrData;
     HelperSQL most;
@@ -36,7 +36,7 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        Bundle bundle = getIntent().getExtras();
+//        Bundle bundle = getIntent().getExtras();
         showAll = findViewById(R.id.SHOW_ALL);
         most = new HelperSQL(this) {
             @Override
@@ -48,7 +48,7 @@ public class ListActivity extends AppCompatActivity {
 //        mArrData= most.getAllCustomersByFIlter_RANDOM();
         //לאוסיף כבלה של ליסט
         mArrData =most.getAllPerson();
-        Connection connection= (Connection) bundle.get("comme");
+//        Connection connection= (Connection) bundle.get("comme");
 //        mArrData=most.getAllCustomersByFIlter(null,null,connection);
         most.close();
 

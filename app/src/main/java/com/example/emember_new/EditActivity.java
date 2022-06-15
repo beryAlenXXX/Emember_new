@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class EditActivity extends AppCompatActivity {
+public class EditActivity extends OptionsMenuActivity {
 
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     Person demyGod;

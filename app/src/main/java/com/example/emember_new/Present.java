@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Present extends AppCompatActivity {
+public class Present extends OptionsMenuActivity {
     TextView textFN, textLN, textKn;
     Button back, done;
     ImageView imageView;

@@ -24,7 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class I_hate_my_life extends AppCompatActivity implements View.OnClickListener {
+public class I_hate_my_life extends OptionsMenuActivity implements View.OnClickListener {
 EditText editText;
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
     Button sendBtn;
