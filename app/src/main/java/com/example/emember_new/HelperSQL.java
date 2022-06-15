@@ -179,11 +179,15 @@ public abstract class HelperSQL extends SQLiteOpenHelper {
         return database.delete(HelperSQL.TABLE_PERSON, null, null);
 
     }
-    public long deleteByRow(long rowId)
-    {
-        return database.delete(HelperSQL.TABLE_PERSON, HelperSQL.COLUMN_ID + "=" + rowId, null);
-    }
+//    public long deleteByRow(long rowId)
+//    {
+//        return database.delete(HelperSQL.TABLE_PERSON, HelperSQL.COLUMN_ID + "=" + rowId, null);
+//    }
 
+    public void deleteByRow(long rowId_long)
+    {
+         database.delete(HelperSQL.TABLE_PERSON, HelperSQL.COLUMN_ID + "=" + rowId_long, null);
+    }
 
     public static long updateByRow(Person p)
     {

@@ -2,7 +2,10 @@ package com.example.emember_new;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +13,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     //Button add,RANDOM, FAMLIY,FRIENDS, JOB, YOU;
     Button add,all,random,family,frinds,job,you;
-
+    public static final String CHANNEL_ID = "com.emember.CHANNEL_IDN";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +26,19 @@ public class MainActivity extends AppCompatActivity {
         job=findViewById(R.id.job);
         you=findViewById(R.id.button);
 
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                    "ememberNotification", NotificationManager.IMPORTANCE_HIGH);
+            NotificationManager manager =
+                    getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 addPerson(v);
 
 
@@ -78,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
     private void openList(View v)
     {

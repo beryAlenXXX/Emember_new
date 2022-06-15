@@ -7,21 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class delete extends AppCompatActivity {
-    HelperSQL mast= new HelperSQL(this) {
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            return null;
-        }
-    };
+public class Delete extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete);
+        HelperSQL mast= new HelperSQL(this) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                return null;
+            }
+        };
         Bundle bundle = getIntent().getExtras();
         long num= bundle.getLong("persen");
         mast.open();
-        Person person=mast.getPersonById(num);
+        mast.deleteByRow(num);
         mast.close();
         //;;;;;;;;;
         Intent intent =new Intent(this,MainActivity.class);

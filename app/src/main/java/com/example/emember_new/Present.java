@@ -83,8 +83,9 @@ public class Present extends AppCompatActivity {
     }
 
     public void delete(View view)
+
     {
-        Intent intent =new Intent(this,MainActivity.class);
+        Intent intent =new Intent(this, Delete.class);
         intent.putExtra("from", num);
         startActivity(intent);
 //        mast.deleteByRow(num);
