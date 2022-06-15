@@ -91,11 +91,11 @@ EditText editText;
             Toast.makeText(getApplicationContext(), "massage cannot br null", Toast.LENGTH_LONG).show();
 
     }
-    public void dialog()//בונה את הדיאלוג אם המשתמש לא נתן הרשאה ומנסה עוד פעם לשלוח הודעה
+    public void dialog()
     {
         AlertDialog.Builder builder = new AlertDialog
                 .Builder(this);
-        builder.setMessage("to contact with developer, the app need to access sms");//הסבר למשתמש
+        builder.setMessage("to contact with developer, the app need to access sms");
         builder.setTitle("Sms permission needed");
         builder.setCancelable(true);
 
@@ -103,7 +103,7 @@ EditText editText;
         builder.setPositiveButton(
                 "Allow", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which)//אם המשתמש לוחץ allow
+                    public void onClick(DialogInterface dialog, int which)
                     {
                         ActivityCompat.requestPermissions(I_hate_my_life.this, new String[]{Manifest.permission.SEND_SMS}, 200);//מבקש הרשאה
                     }
@@ -112,7 +112,7 @@ EditText editText;
                 "No", new DialogInterface.OnClickListener() {
 
                     @Override
-                    public void onClick(DialogInterface dialog, int which)//אם המשתמש לוחץ no
+                    public void onClick(DialogInterface dialog, int which)
                     {
                         dialog.cancel();//סוגר את הדיאלוג
                     }
@@ -132,20 +132,20 @@ EditText editText;
 
 
         SmsManager sms=SmsManager.getDefault();//מתחבר לsms של המערכת
-        sms.sendTextMessage("0504463544", null, msg, pi,null);//שולח את ההודעה וחוזר למסך הראשי
+        sms.sendTextMessage("0504463544", null, msg, pi,null);
 
         Toast.makeText(getApplicationContext(), "Message Sent successfully!", Toast.LENGTH_LONG).show();
     }
 
     public void permission() {//פעולה שמטפלת בהרשאה
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {//אם אין הרשאה
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {//אם זה פעם שניה שמבקשים הרשאה
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {
                 dialog();
 
 
             }
             else if (!sp.getBoolean("firstCheckPermission",false)){//אחרת אם זה פעם ראשונה שמבקשים הרשאה
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 100);//מבקרש הרשאה
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 100);
                 editor.putBoolean("firstCheckPermission",true);
                 editor.commit();
 

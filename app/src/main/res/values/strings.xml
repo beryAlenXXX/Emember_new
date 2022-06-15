@@ -4,5 +4,7 @@
     <string name="permission_camera">PERMISSION_CAMERA</string>
     <string name="permission_storage">PERMISSION_STORAGE</string>
     <string name="permission_contacts">PERMISSION_CONTACTS</string>
+    <string name="thankDialod">Thank you, we will be in touch</string>
+    <string name="OK">OK</string>
 
 </resources>

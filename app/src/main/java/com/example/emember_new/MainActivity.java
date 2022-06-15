@@ -1,18 +1,32 @@
 package com.example.emember_new;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends OptionsMenuActivity {
     //Button add,RANDOM, FAMLIY,FRIENDS, JOB, YOU;
     Button add,all,random,family,frinds,job,you;
+    Dialog dialog;
+    TextView showBtn,cancelBtn;
+
+    public final int FOR_RESULT=4555;
     public static final String CHANNEL_ID = "com.emember.CHANNEL_IDN";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +146,46 @@ public class MainActivity extends OptionsMenuActivity {
     public void kill_me(View view)
     {
         Intent intent =new Intent(this,I_hate_my_life.class);
-        startActivity(intent);
+        startActivityForResult(intent,FOR_RESULT);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==FOR_RESULT)
+        {
+            createDialog();
+
+//            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//            fab.setOnClickListener(view -> {
+
+                //show
+                dialog.show();
+//            });
+
+            //SHOW BTN CLIKCED
+            showBtn.setOnClickListener(v -> Toast.makeText(MainActivity.this,"CLICKED",Toast.LENGTH_LONG).show());
+
+            //CANCEL
+            cancelBtn.setOnClickListener(v -> dialog.dismiss());
+
+        }
+
+    }
+
+    private void createDialog()
+    {
+        dialog=new Dialog(this);
+
+        //SET TITLE
+        dialog.setTitle("Player");
+
+        //set content
+        dialog.setContentView(R.layout.custom_layout);
+
+        showBtn= (TextView) dialog.findViewById(R.id.showTxt);
+        cancelBtn= (TextView) dialog.findViewById(R.id.cancelTxt);
+    }
+
+
 }
