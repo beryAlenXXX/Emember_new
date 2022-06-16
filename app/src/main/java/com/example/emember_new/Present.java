@@ -82,13 +82,13 @@ public class Present extends OptionsMenuActivity {
         startActivity(intent);
     }
 
-    public void delete(View view)
-
-    {
-        Intent intent =new Intent(this, Delete.class);
-        intent.putExtra("from", num);
-        startActivity(intent);
-//        mast.deleteByRow(num);
-//        back(view);
-    }
+//    public void delete(View view)
+//
+//    {
+//        Intent intent =new Intent(this, Delete.class);
+//        intent.putExtra("from", num);
+//        startActivity(intent);
+////        mast.deleteByRow(num);
+////        back(view);
+//    }
 }
