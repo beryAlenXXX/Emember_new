@@ -150,12 +150,12 @@ EditText editText;
                 editor.commit();
 
             }
-            else{//אם זה כבר פעם שלישית מפנים את המשתמש להגדרות של האפליקציה
+            else{
                 Toast.makeText(this, "Please allow sms permission setting", Toast.LENGTH_LONG);
                 Intent intent = new Intent();
                 intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);//הגדרת הintent להגדרות של האפליקציה
                 Uri uri = Uri.fromParts("package", this.getPackageName(), null);
-                intent.setData(uri);//הפניה להגדרות של האפליקציה הנוכחית
+                intent.setData(uri);
                 this.startActivity(intent);
             }
 
@@ -171,17 +171,17 @@ EditText editText;
         if (requestCode == 100) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {//אם המשתמש אישר
                 isGranted = true;
-                System.out.println("PLAYGROUND Permission has been granted");
+                System.out.println("yo mama PLAYGROUND Permission has been granted");
 
-            } else {//המשתמש לא אישר
-                System.out.println("PLAYGROUND Permission has been denied or request cancelled");
+            } else {
+                System.out.println("PLAYGROUND Permission has been denied or request cancelled f**k you!");
                 isGranted = false;
             }
         }
         if (requestCode == 200) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 isGranted = true;
-                System.out.println("PLAYGROUND Permission has been granted");
+                System.out.println("yo mama PLAYGROUND Permission has been granted ");
 
             } else
                 isGranted = false;
