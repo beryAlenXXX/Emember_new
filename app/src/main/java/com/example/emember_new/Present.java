@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,7 +64,7 @@ public class Present extends OptionsMenuActivity {
         textFN.setText(person.getFname());
         textLN.setText(person.getlName());
         textKn.setText(person.getDescription());
-        imageView.setImageBitmap(person.getDPic());
+        imageView.setBackground(new BitmapDrawable(person.getDPic()));
 
 
     }
