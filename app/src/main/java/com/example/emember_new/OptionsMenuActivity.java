@@ -50,7 +50,7 @@ public class OptionsMenuActivity extends AppCompatActivity
         else if (id == R.id.contact)
         {
             //go to contactUs screen
-            Intent intent = new Intent(this, I_hate_my_life.class);
+            Intent intent = new Intent(this, SmsActivity.class);
             startActivity(intent);
         }
 

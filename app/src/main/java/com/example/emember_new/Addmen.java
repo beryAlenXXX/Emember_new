@@ -58,7 +58,7 @@ public class Addmen extends OptionsMenuActivity {
                 return null;
             }
         };
-        myConnection=Connection.RANDOM;
+        myConnection = Connection.RANDOM;
 
         listOfPerson = new ArrayList<Person>();
 
@@ -103,13 +103,11 @@ public class Addmen extends OptionsMenuActivity {
 
             if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
-            }
-            else {
+            } else {
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 try {
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                }
-                catch (ActivityNotFoundException e) {
+                } catch (ActivityNotFoundException e) {
                     // display error state to the user
                 }
             }
@@ -126,12 +124,12 @@ public class Addmen extends OptionsMenuActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE)
             if (resultCode == RESULT_OK) {
 
-              //  dPic= (Bitmap) data.getExtras().get("data");
-               Bitmap b = (Bitmap) data.getExtras().get("data");
+                //  dPic= (Bitmap) data.getExtras().get("data");
+                Bitmap b = (Bitmap) data.getExtras().get("data");
 //                Bitmap b =Bitmap.createBitmap(dPic);
 //                byte [] b = new byte()[];
                 pik1.setImageBitmap(b);
-               // pik1.setImageBitmap(getResizedBitmap(b, 640, 800));
+                // pik1.setImageBitmap(getResizedBitmap(b, 640, 800));
 
             }
     }
@@ -208,7 +206,6 @@ public class Addmen extends OptionsMenuActivity {
         intent.putExtra("persen", num);
         startActivity(intent);
     }
-
 
 
     public Person getDemyGod() {

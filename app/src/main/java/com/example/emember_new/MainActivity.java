@@ -1,15 +1,10 @@
 package com.example.emember_new;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,8 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends OptionsMenuActivity {
     //Button add,RANDOM, FAMLIY,FRIENDS, JOB, YOU;
@@ -143,9 +136,9 @@ public class MainActivity extends OptionsMenuActivity {
 
     }
 
-    public void kill_me(View view)
+    public void sendSms(View view)
     {
-        Intent intent =new Intent(this,I_hate_my_life.class);
+        Intent intent =new Intent(this, SmsActivity.class);
         startActivityForResult(intent,FOR_RESULT);
     }
 
@@ -163,11 +156,14 @@ public class MainActivity extends OptionsMenuActivity {
                 dialog.show();
 //            });
 
-            //SHOW BTN CLIKCED
-            showBtn.setOnClickListener(v -> Toast.makeText(MainActivity.this,"CLICKED",Toast.LENGTH_LONG).show());
-
             //CANCEL
             cancelBtn.setOnClickListener(v -> dialog.dismiss());
+            //SHOW BTN CLIKCED
+            Intent intent =new Intent(this, SmsActivity.class);
+
+            showBtn.setOnClickListener(v -> startActivity(intent));
+
+
 
         }
 

@@ -11,33 +11,23 @@
         android:src="@drawable/ic_baseline_clean_hands_24"
         android:id="@+id/imageView" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:paddingTop="24dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Michael Carrick"
-        android:id="@+id/nameTxtt" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="24dp"
         android:paddingLeft="24dp"
-
+        android:layout_gravity="right"
         android:paddingRight="24dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Is a Midfielder.Joined from Totenham in 2006. "
+        android:text=" אתה בטוח לא רוצה לשלוח הודעה?"
         android:id="@+id/contentTxt" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:gravity="center_vertical|end"
         android:orientation="horizontal"
+        android:layout_gravity="left"
         android:padding="8dp">
 
         <TextView
@@ -48,7 +38,7 @@
             android:padding="5dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:gravity="center_vertical|center_horizontal"
-            android:text="Show"
+            android:text="לא"
             android:textColor="@color/colorAccent"
             android:id="@+id/showTxt" />
 
@@ -60,7 +50,7 @@
             android:padding="5dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:gravity="center_vertical|center_horizontal"
-            android:text="Cancel"
+            android:text="כן"
             android:textColor="@color/colorAccent"
             android:id="@+id/cancelTxt" />
 

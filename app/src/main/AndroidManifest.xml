@@ -37,7 +37,7 @@
         </receiver>
 
         <activity
-            android:name=".I_hate_my_life"
+            android:name=".SmsActivity"
             android:exported="false" />
         <activity
             android:name=".Delete"

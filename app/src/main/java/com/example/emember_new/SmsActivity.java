@@ -1,8 +1,6 @@
 package com.example.emember_new;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -17,14 +15,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.SmsManager;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class I_hate_my_life extends OptionsMenuActivity implements View.OnClickListener {
+public class SmsActivity extends OptionsMenuActivity implements View.OnClickListener {
 EditText editText;
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
     Button sendBtn;
@@ -40,7 +37,7 @@ EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ihate_my_life);
+        setContentView(R.layout.activity_sms);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -88,15 +85,15 @@ EditText editText;
                 sendSmsFunction();
         }
         else
-            Toast.makeText(getApplicationContext(), "massage cannot br null", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "write something!", Toast.LENGTH_LONG).show();
 
     }
     public void dialog()
     {
         AlertDialog.Builder builder = new AlertDialog
                 .Builder(this);
-        builder.setMessage("to contact with developer, the app need to access sms");
-        builder.setTitle("Sms permission needed");
+        builder.setMessage("if you want to send us sms, we need your permission!");
+        builder.setTitle("I need your Permission!");
         builder.setCancelable(true);
 
 
@@ -105,7 +102,7 @@ EditText editText;
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
-                        ActivityCompat.requestPermissions(I_hate_my_life.this, new String[]{Manifest.permission.SEND_SMS}, 200);//מבקש הרשאה
+                        ActivityCompat.requestPermissions(SmsActivity.this, new String[]{Manifest.permission.SEND_SMS}, 200);//מבקש הרשאה
                     }
                 });
         builder.setNegativeButton(
@@ -119,19 +116,19 @@ EditText editText;
                 });
 
         AlertDialog alertDialog = builder.create();
-        alertDialog.show();//מציד את הדיאלוג
+        alertDialog.show();
     }
 
 
-    public void sendSmsFunction(){//פעולה ששולחת sms למפתח
-        String msg= txtMessage.getText().toString();//מוציא את ההודעה מהeditText
+    public void sendSmsFunction(){
+        String msg= txtMessage.getText().toString();
 
 
         Intent intent=new Intent(getApplicationContext(),MainActivity.class);
         PendingIntent pi=PendingIntent.getActivity(getApplicationContext(), 0, intent,PendingIntent.FLAG_IMMUTABLE);
 
 
-        SmsManager sms=SmsManager.getDefault();//מתחבר לsms של המערכת
+        SmsManager sms=SmsManager.getDefault();
         sms.sendTextMessage("0504463544", null, msg, pi,null);
 
         Toast.makeText(getApplicationContext(), "Message Sent successfully!", Toast.LENGTH_LONG).show();
@@ -144,7 +141,7 @@ EditText editText;
 
 
             }
-            else if (!sp.getBoolean("firstCheckPermission",false)){//אחרת אם זה פעם ראשונה שמבקשים הרשאה
+            else if (!sp.getBoolean("firstCheckPermission",false)){
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 100);
                 editor.putBoolean("firstCheckPermission",true);
                 editor.commit();
@@ -153,7 +150,7 @@ EditText editText;
             else{
                 Toast.makeText(this, "Please allow sms permission setting", Toast.LENGTH_LONG);
                 Intent intent = new Intent();
-                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);//הגדרת הintent להגדרות של האפליקציה
+                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                 Uri uri = Uri.fromParts("package", this.getPackageName(), null);
                 intent.setData(uri);
                 this.startActivity(intent);
@@ -165,16 +162,16 @@ EditText editText;
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {//פעולה שמופעלת אחרי בקשת הרשאה
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == 100) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {//אם המשתמש אישר
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 isGranted = true;
-                System.out.println("yo mama PLAYGROUND Permission has been granted");
+                System.out.println("yo mama Permission has been granted");
 
             } else {
-                System.out.println("PLAYGROUND Permission has been denied or request cancelled f**k you!");
+                System.out.println("Permission has been denied or request cancelled!");
                 isGranted = false;
             }
         }
