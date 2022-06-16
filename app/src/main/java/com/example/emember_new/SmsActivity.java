@@ -76,7 +76,7 @@ EditText editText;
     public void onClick(View v) {
         if (!txtMessage.getText().toString().equals("")) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                permission();//בקשת הרשאה
+                permission();
                 if (isGranted) {
                     sendSmsFunction();
                 }
@@ -111,7 +111,7 @@ EditText editText;
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
-                        dialog.cancel();//סוגר את הדיאלוג
+                        dialog.cancel();
                     }
                 });
 
@@ -157,7 +157,7 @@ EditText editText;
             }
 
         }
-        else//יש הרשאה
+        else
             isGranted = true;
     }
 

@@ -26,9 +26,9 @@ public class MyCustomBroadcastReceiver extends BroadcastReceiver
     private void createNotification(Context context){
         NotificationCompat.Builder builder = new
                 NotificationCompat.Builder(context, MainActivity.CHANNEL_ID);
-        builder.setSmallIcon(R.drawable.images);
-        builder.setContentTitle("Come to play");
-        builder.setContentText("Try to make new best score");
+        builder.setSmallIcon(R.mipmap.images);
+        builder.setContentTitle("hey you you're finally awake ");
+        builder.setContentText("Go to Emember to remember!");
         builder.setAutoCancel(true);
         builder.setPriority(NotificationCompat.PRIORITY_HIGH);
         Intent intent = new Intent(context, MainActivity.class);
