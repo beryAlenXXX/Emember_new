@@ -27,8 +27,8 @@ public class MainActivity extends OptionsMenuActivity {
         setContentView(R.layout.activity_main);
         add=findViewById(R.id.add);
         all =findViewById(R.id.All);
-        random= findViewById(R.id.RANDOM);
-        family=findViewById(R.id.famliy);
+        random= findViewById(R.id.Random);
+        family=findViewById(R.id.family);
         frinds =findViewById(R.id.friends);
         job=findViewById(R.id.job);
         you=findViewById(R.id.button);
