@@ -15,7 +15,7 @@
         android:layout_height="109dp"
         android:drawableLeft="@drawable/ic_person_black_24dp"
         android:gravity="center_vertical"
-        android:text="Button"
+        android:text="Open"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="3dp" />

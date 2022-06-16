@@ -107,11 +107,11 @@ public class MainActivity extends OptionsMenuActivity {
             case R.id.All:
 
 
-            break;
-            case R.id.RANDOM:
-                connection=Connection.RANDOM;
-
-                break;
+//            break;
+//            case R.id.RANDOM:
+//                connection=Connection.RANDOM;
+//
+//                break;
 
         }
         Intent intent =  new Intent(this,ListActivity.class);
