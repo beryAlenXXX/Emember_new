@@ -42,7 +42,7 @@ public class OptionsMenuActivity extends AppCompatActivity
 
         else if (id == R.id.ADD)
         {
-            Intent intent = new Intent(this, Addmen.class);
+            Intent intent = new Intent(this, AddmenActivity.class);
             //go to login screen
             startActivity(intent);
         }

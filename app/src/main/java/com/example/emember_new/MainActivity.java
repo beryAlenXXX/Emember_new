@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends OptionsMenuActivity {
     //Button add,RANDOM, FAMLIY,FRIENDS, JOB, YOU;
@@ -130,7 +129,7 @@ public class MainActivity extends OptionsMenuActivity {
 
     public void addPerson(View view) {
 
-        Intent intent=new Intent(this, Addmen.class);
+        Intent intent=new Intent(this, AddmenActivity.class);
 
            startActivity(intent);
 

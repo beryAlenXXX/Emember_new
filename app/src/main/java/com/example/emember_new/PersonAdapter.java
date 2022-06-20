@@ -13,19 +13,18 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import java.util.List;
 
-public class StudentGradeAdapter extends ArrayAdapter< Person>
+public class PersonAdapter extends ArrayAdapter< Person>
 {
 
     Context context;
     List<Person> objects;
 
-    public StudentGradeAdapter(@NonNull Context context, int resource, @NonNull List<Person> objects)
+    public PersonAdapter(@NonNull Context context, int resource, @NonNull List<Person> objects)
     {
         super(context, resource, objects);
         this.objects = objects;
@@ -47,7 +46,7 @@ public class StudentGradeAdapter extends ArrayAdapter< Person>
             {
                 long sort =temp.getId();
                 Bundle bundle =new Bundle()  ;
-                Intent intent =new Intent(context,Present.class );
+                Intent intent =new Intent(context, PresentActivity.class );
                 intent.putExtra("persen", sort);
 //                    startActivity(intent);
                 startActivity(context, intent,bundle);

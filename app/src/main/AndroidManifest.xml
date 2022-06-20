@@ -49,9 +49,9 @@
             android:name=".EditActivity"
             android:exported="false" />
         <activity
-            android:name=".Present"
+            android:name=".PresentActivity"
             android:exported="false" />
-        <activity android:name=".Addmen" />
+        <activity android:name=".AddmenActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

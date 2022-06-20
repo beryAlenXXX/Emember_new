@@ -14,16 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 
-public class Addmen extends OptionsMenuActivity {
+public class AddmenActivity extends OptionsMenuActivity {
 
 
     private static final int MY_CAMERA_REQUEST_CODE = 100;
@@ -202,7 +199,7 @@ public class Addmen extends OptionsMenuActivity {
         /////Toast.makeText(this, (int) num, Toast.LENGTH_SHORT).show();
         listOfPerson.add(c1);
         mast.close();
-        Intent intent = new Intent(this, Present.class);
+        Intent intent = new Intent(this, PresentActivity.class);
         intent.putExtra("persen", num);
         startActivity(intent);
     }

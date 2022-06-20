@@ -1,7 +1,5 @@
 package com.example.emember_new;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,11 +20,11 @@ public class ListActivity extends OptionsMenuActivity {
     private ListView showAll;
     private ArrayList<Person> mArrData;
     HelperSQL most;
-    StudentGradeAdapter adapter;
+    PersonAdapter adapter;
 
     public void viewOw(long num)
     {
-        Intent intent=new Intent(this,Present.class);
+        Intent intent=new Intent(this, PresentActivity.class);
         intent.putExtra("persen",num);
         startActivity(intent);
     }
@@ -53,7 +50,7 @@ public class ListActivity extends OptionsMenuActivity {
         most.close();
 
 
-        adapter =new StudentGradeAdapter(this, R.layout.list_per, mArrData);
+        adapter =new PersonAdapter(this, R.layout.list_per, mArrData);
         showAll.setAdapter(adapter);
         showAll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

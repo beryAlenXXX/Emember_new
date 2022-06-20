@@ -11,12 +11,12 @@ enum Connection {
 }
 
 public class Person {
-    long id;
-    String fname;
-    String lName;
-    Bitmap dPic ;
-    Connection myConnection;
-    String description;
+    long id; // מס' זיהוי
+    String fname; // שם פרטי
+    String lName; // שם משפחה
+    Bitmap dPic ;// תמונת איש הקשר
+    Connection myConnection; // קרבת איש הקשר
+    String description; // תיאור
 
     public Person(String fname, String lname, Bitmap bitmap, Connection myConnection, String description, long id)
     {

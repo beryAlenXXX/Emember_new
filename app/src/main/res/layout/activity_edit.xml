@@ -13,7 +13,7 @@
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"
         android:scrollbars="vertical"
-        tools:context=".Addmen">
+        tools:context=".AddmenActivity">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,6 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="back"
+                android:layout_alignParentLeft="true"
                 android:text="back"
                 android:textSize="20dp" />
 

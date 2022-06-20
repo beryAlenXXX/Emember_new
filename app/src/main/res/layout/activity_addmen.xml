@@ -14,7 +14,7 @@
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"
         android:scrollbars="vertical"
-        tools:context=".Addmen">
+        tools:context=".AddmenActivity">
 
         <RelativeLayout
             android:layout_width="match_parent"

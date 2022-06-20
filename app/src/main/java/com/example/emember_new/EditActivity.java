@@ -1,7 +1,6 @@
 package com.example.emember_new;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
@@ -270,7 +269,7 @@ public class EditActivity extends OptionsMenuActivity {
             /////Toast.makeText(this, (int) num, Toast.LENGTH_SHORT).show();
             listOfPerson.add(c1);
             mast.close();
-            Intent intent = new Intent(this, Present.class);
+            Intent intent = new Intent(this, PresentActivity.class);
             intent.putExtra("persen", num);
             startActivity(intent);
         }
